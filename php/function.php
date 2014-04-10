@@ -106,15 +106,21 @@ function Collection($keyword, $page) {
 * 请求搜索
 */
 function Get_search($keyword, $currentpage='', $collpage='', $key, $url) {
+    echo 'ok1';
 	$curlPost = 'keyword='.urlencode($keyword).'&key='.urlencode($key).'&currentpage='.urlencode($currentpage);
 	$ch = curl_init();
+	echo 'ok2';
 	curl_setopt($ch, CURLOPT_URL, $url.'search.php');
+	echo 'ok3';
 	curl_setopt($ch, CURLOPT_HEADER, 0);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	echo 'ok4';
 	curl_setopt($ch, CURLOPT_POST, 1);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $curlPost);
 	$data = curl_exec($ch);
+	echo 'ok5';
 	curl_close($ch);
+	echo 'ok6';
 	return $data;
 }
 

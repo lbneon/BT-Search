@@ -2,6 +2,8 @@
 include 'function.php';
 
 if (!empty($_POST['keyword'])) {
+    echo $_POST['keyword'];
+    echo 'okok';
 	$search_data_tmp = Get_search(htmlspecialchars(trim($_POST['keyword'])), '', '', $key, $SITE['url']);
 	echo $search_data_tmp;
 	$search_data = json_decode($search_data_tmp, true);

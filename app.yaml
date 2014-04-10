@@ -1,4 +1,4 @@
-application: btsearch
+application: bt-search
 version: 1
 runtime: php
 api_version: 1
@@ -9,6 +9,18 @@ handlers:
 
 - url: /index\.html
   script: index.php
+
+- url: /public/css
+  static_dir: public/css
+
+- url: /public/js
+  static_dir: public/js
+  
+- url: /public
+  static_dir: public
+
+- url: /tarms\.txt
+  script: tarms.txt
 
 - url: /stylesheets
   static_dir: stylesheets

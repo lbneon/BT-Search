@@ -6,7 +6,7 @@ class medoo {
 
 	// For MySQL, MSSQL, Sybase
 	protected $server = '';
-	
+
 	//开发使用	
 	protected $username = '';
 	protected $password = '';

@@ -3,6 +3,7 @@ include 'function.php';
 
 if (!empty($_POST['keyword'])) {
 	$search_data_tmp = Get_search(htmlspecialchars(trim($_POST['keyword'])), '', '', $key, $SITE['url']);
+	echo $search_data_tmp;
 	$search_data = json_decode($search_data_tmp, true);
 	if (!isset($search_data['Error'])) {
 		$keyword = $search_data['keyword'];
@@ -59,15 +60,15 @@ if (!empty($_GET['magnetbt'])) {
 		<!-- 网站导航栏 -->
 		<div class="navbar navbar-default" role="navigation">
 	        <div class="navbar-header">
-	          <a class="navbar-brand" href="http://bt.kslr.net/">BT-Wget</a>
+	          <a class="navbar-brand" href="/">BT-Wget</a>
 	        </div>
 	        <div class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav">
-	            <li class="active"><a href="http://bt.kslr.net/">首页</a></li>
+	            <li class="active"><a href="/">首页</a></li>
 	            <li><a href="tarms.txt">使用条款</a></li>
 	            <li><a href="" data-toggle="modal" data-target="#face">反馈建议</a></li>
-	            <li><a href="javascript:alert('请给我发送邮件 Mail: kslrwang@gmail.com')">获得源代码</a></li>
-	            <li><a href="http://www.kslr.net">作者网站</a></li>
+	            <li><a href="javascript:alert('请给我发送邮件 Mail: lbneon@gmail.com')">获得源代码</a></li>
+	            <li><a href="/">作者网站</a></li>
 		      </li>
 	          </ul>
 		         <form class="navbar-form navbar-left" role="search" method="post" action="index.php">

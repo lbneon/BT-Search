@@ -109,20 +109,20 @@ function Get_search($keyword, $currentpage='', $collpage='', $key, $url) {
 	$curlPost = 'keyword='.urlencode($keyword).'&key='.urlencode($key).'&currentpage='.urlencode($currentpage);
 	echo $curlPost;
 	$ch = curl_init();
-	echo 'ok2';
+	echo '</br>ok2</br>';
 	curl_setopt($ch, CURLOPT_URL, $url.'search.php');
-	echo CURLOPT_URL;
+	echo $url.'search.php';
 	curl_setopt($ch, CURLOPT_HEADER, 0);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	echo 'ok3';
+	echo '</br>ok3</br>';
 	echo $curlPost;
 	curl_setopt($ch, CURLOPT_POST, 1);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $curlPost);
 	$data = curl_exec($ch);
-	echo 'ok5';
+	echo '</br>ok5</br>';
 	echo $data;
 	curl_close($ch);
-	echo 'ok6';
+	echo '</br>ok6</br>';
 	return $data;
 }
 

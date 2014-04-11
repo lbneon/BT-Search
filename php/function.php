@@ -107,22 +107,14 @@ function Collection($keyword, $page) {
 */
 function Get_search($keyword, $currentpage='', $collpage='', $key, $url) {
 	$curlPost = 'keyword='.urlencode($keyword).'&key='.urlencode($key).'&currentpage='.urlencode($currentpage);
-	echo $curlPost;
 	$ch = curl_init();
-	echo '</br>ok2</br>';
 	curl_setopt($ch, CURLOPT_URL, $url.'search.php');
-	echo $url.'search.php';
 	curl_setopt($ch, CURLOPT_HEADER, 0);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	echo '</br>ok3</br>';
-	echo $curlPost;
 	curl_setopt($ch, CURLOPT_POST, 1);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $curlPost);
 	$data = curl_exec($ch);
-	echo '</br>ok5</br>';
-	echo $data;
 	curl_close($ch);
-	echo '</br>ok6</br>';
 	return $data;
 }
 

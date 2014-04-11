@@ -3,7 +3,6 @@ include 'function.php';
 
 if (!empty($_POST['keyword'])) {
 	$search_data_tmp = Get_search(htmlspecialchars(trim($_POST['keyword'])), '', '', $key, $SITE['url']);
-	echo $search_data_tmp;
 	$search_data = json_decode($search_data_tmp, true);
 	if (!isset($search_data['Error'])) {
 		$keyword = $search_data['keyword'];

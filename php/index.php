@@ -79,7 +79,7 @@ if (!empty($_GET['magnetbt'])) {
 
   <div class="row">
     <div class="col-lg-12 col-lg">
-      <img scr="public/img/logo.jpeg"></img>
+      <center><img src="public/img/logo.jpeg" width="300px"></img></center>
       <form class="navbar-form navbar-left" role="search" method="post" action="index.php">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="<?php echo htmlspecialchars($keyword);?>" name="keyword">

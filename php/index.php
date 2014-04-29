@@ -57,14 +57,14 @@ if (!empty($_GET['magnetbt'])) {
   <!-- 网站导航栏 -->
   <div class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">BT-Wget</a>
+      <a class="navbar-brand" href="/">兔子搜索</a>
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">首页</a></li>
         <li><a href="" data-toggle="modal" data-target="#face">反馈建议</a></li>
-        <li><a href="javascript:alert('请给我发送邮件 Mail: lbneon@gmail.com')">获得源代码</a></li>
-        <li><a href="/">作者网站</a></li>
+        <li><a href="javascript:alert('请给我发送邮件 Mail: jufuli.ml@gmail.com')">联系我们</a></li>
+        <li><a target="_blank" href="http://www.jufuli.ml">福利资源</a></li>
       </ul>
 
     </div>
@@ -90,7 +90,9 @@ if (!empty($_GET['magnetbt'])) {
     </div>      
   </div>
 
-
+<?php
+  if ($st == false) {
+?>
   <!-- 顶部刚搜索的关键词 -->
   <div class="row">
     <div class="col-lg-12 col-lg">
@@ -187,6 +189,10 @@ if (!empty($_GET['magnetbt'])) {
   </div>
   <!-- 网站主体结束 -->
   
+  <?php
+    }
+  ?>
+  
   <!-- 底部 -->
   <div class="footer navbar-default">
   		<p>© 2014 Bunny.CF All Rights Reserved.</p>
@@ -205,16 +211,16 @@ if (!empty($_GET['magnetbt'])) {
         <!-- 多说评论框 -->
 		<div class="ds-thread"></div>
 		<script type="text/javascript">
-			var duoshuoQuery = {short_name:"bt-wget"};
-				(function() {
-					var ds = document.createElement('script');
-					ds.type = 'text/javascript';ds.async = true;
-					ds.src = 'http://static.duoshuo.com/embed.js';
-					ds.charset = 'UTF-8';
-					(document.getElementsByTagName('head')[0] 
-					|| document.getElementsByTagName('body')[0]).appendChild(ds);
-				})();
-		</script>
+          var duoshuoQuery = {short_name:"jfl"};
+        	(function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = 'http://static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] 
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        	})();
+        </script>
 		<!-- 多说评论框结束 -->
       </div>
       <div class="modal-footer">

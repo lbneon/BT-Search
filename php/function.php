@@ -51,17 +51,12 @@ function Curl_content($keyword, $page = '') {
 	if ($htmlconter == null) {
 		$curl = new cURL();
 		$url = 'http://torrentkitty.org/search/';
-		$url = 'http://torrentkitty.org/search/%E6%9C%BA%E5%99%A8/';
-		$url = 'http://www.baidu.com';
-		#$content = $curl->get($url.$keyword.$page);
-		$url = 'http://torrentkitty.org/search/怪兽/';
+		#$url = 'http://torrentkitty.org/search/%E6%9C%BA%E5%99%A8/';
+		#$url = 'http://www.baidu.com';
+		$content = $curl->get($url.$keyword.$page);
+		#$url = 'http://torrentkitty.org/search/怪兽/';
 		#$content = $curl->get($url);
-		#$cache->set($keyword.$page, $content, 2592000);
-		$curl->setopt(CURLOPT_SSL_VERIFYPEER, false);
-        $curl->setopt(CURLOPT_COOKIEJAR, 'cookie.txt');
-        $curl->setopt(CURLOPT_COOKIEFILE, 'cookie.txt');
-        $curl->setopt($ch, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.0.3705; .NET CLR 1.1.4322)');
-        $content = $curl->get('http://torrentkitty.org/search/机器/');
+		$cache->set($keyword.$page, $content, 2592000);
 		return '777' . $content;
 	} else {
 		return $htmlconter;
@@ -127,8 +122,8 @@ function Get_search($keyword, $currentpage='', $collpage='', $key, $url) {
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($ch, CURLOPT_POST, 1);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $curlPost);
-	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 60);
-	curl_setopt($ch, CURLOPT_TIMEOUT, 60);
+	#curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 60);
+	#curl_setopt($ch, CURLOPT_TIMEOUT, 60);
 	$data = curl_exec($ch);
 	curl_close($ch);
 	return $data;

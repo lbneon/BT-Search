@@ -112,9 +112,19 @@ function Collection($keyword, $page) {
 * 请求搜索
 */
 function Get_search($keyword, $currentpage='', $collpage='', $key, $url) {
+    $header = array();
+    $header[] = 'Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5';
+    $header[] = 'Cache-Control: max-age=0';
+    $header[] = 'Connection: keep-alive';
+    $header[] = 'Keep-Alive: 300';
+    $header[] = 'Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7';
+    $header[] = 'Accept-Language: en-us,en;q=0.5';
+    $header[] = 'Pragma: ';
+    
 	$curlPost = 'keyword='.urlencode($keyword).'&key='.urlencode($key).'&currentpage='.urlencode($currentpage);
 	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (compatible; CrawlBot/1.0.0)');
+	curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9.0.11) Gecko/2009060215 Firefox/3.0.11 (.NET CLR 3.5.30729)');
+	curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 	curl_setopt($ch, CURLOPT_URL, $url.'search.php');
 	curl_setopt($ch, CURLOPT_HEADER, 0);

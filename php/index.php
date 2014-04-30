@@ -4,14 +4,15 @@ include 'function.php';
 if (!empty($_POST['keyword'])) {
 	$search_data_tmp = Get_search(htmlspecialchars(trim($_POST['keyword'])), '', '', $key, $SITE['url']);
 	$search_data = json_decode($search_data_tmp, true);
-	print($search_data_tmp) ;
 	if (!isset($search_data['Error'])) {
 		$keyword = $search_data['keyword'];
 		$collpage = $search_data['collpage'];
 		$currentpage = $search_data['currentpage'];
 		batchsql($search_data['data'], htmlspecialchars(trim($_POST['keyword'])));
+		print($search_data) ;
 	} else {
 		$keyword = $default_keyword;
+		echo '111';
 	}
 } elseif (!empty($_GET['keyword'])) {
 	$st = false;

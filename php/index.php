@@ -90,9 +90,6 @@ if (!empty($_GET['magnetbt'])) {
     </div>      
   </div>
 
-<?php
-  if ($st == false) {
-?>
   <!-- 顶部刚搜索的关键词 -->
   <div class="row">
     <div class="col-lg-12 col-lg">
@@ -104,6 +101,10 @@ if (!empty($_GET['magnetbt'])) {
     	?>
     </div>      
   </div>
+
+<?php
+  //if ($st == false) {
+?>
 
   <!-- 刚刚搜索过的种子列表 -->
   <div class="history">
@@ -190,7 +191,7 @@ if (!empty($_GET['magnetbt'])) {
   <!-- 网站主体结束 -->
   
   <?php
-    }
+    //}
   ?>
   
   <!-- 底部 -->

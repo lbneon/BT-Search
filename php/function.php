@@ -123,7 +123,7 @@ function Get_search($keyword, $currentpage='', $collpage='', $key, $url) {
     
 	$curlPost = 'keyword='.urlencode($keyword).'&key='.urlencode($key).'&currentpage='.urlencode($currentpage);
 	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9.0.11) Gecko/2009060215 Firefox/3.0.11 (.NET CLR 3.5.30729)');
+	curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible;)");
 	curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 	curl_setopt($ch, CURLOPT_URL, $url.'search.php');

@@ -57,6 +57,10 @@ function Curl_content($keyword, $page = '') {
 		$url = 'http://torrentkitty.org/search/怪兽/';
 		#$content = $curl->get($url);
 		#$cache->set($keyword.$page, $content, 2592000);
+		$curl->setopt(CURLOPT_SSL_VERIFYPEER, false);
+        $curl->setopt(CURLOPT_COOKIEJAR, 'cookie.txt');
+        $curl->setopt(CURLOPT_COOKIEFILE, 'cookie.txt');
+        $curl->setopt($ch, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.0.3705; .NET CLR 1.1.4322)');
         $content = $curl->get('http://torrentkitty.org/search/机器/');
 		return '777' . $content;
 	} else {

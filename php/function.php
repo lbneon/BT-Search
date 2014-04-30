@@ -52,6 +52,7 @@ function Curl_content($keyword, $page = '') {
 		$curl = new cURL();
 		$url = 'http://torrentkitty.org/search/';
 		$content = $curl->get($url.$keyword.$page);
+		return $url.$keyword.$page;
 		$cache->set($keyword.$page, $content, 2592000);
 		return $content;
 	} else {

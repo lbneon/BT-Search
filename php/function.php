@@ -84,9 +84,9 @@ function Collection($keyword, $page) {
 	$content = Curl_content($keyword, $page);
 	preg_match_all("/<tr><td class=\"name\">(.+?)<\/td><\/tr>/ms", $content, $list);
 	$lu_list = array();
-	if (is_array($list)) {
-		for ($i=0; $i < count($list); $i++) { 
-			$video_list = $list;
+	if (is_array($list['0'])) {
+		for ($i=0; $i < count($list['0']); $i++) { 
+			$video_list = $list['0'];
 			preg_match_all("/<td(.[^>]*)>(.+?)<\/td>/ms", $video_list[$i], $video_info[]);
 			preg_match ("/href=\"magnet:(.+?)\"/ms", $video_info[$i]['2']['3'], $magnet_infos[]);
 			$bt = array();

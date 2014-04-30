@@ -30,10 +30,11 @@ if (!empty($_POST['keyword']) && $_POST['key'] == $key) {
 	// 如果没有指定当前页则默认采集一页
 	if (!empty($_POST['currentpage'])) {
 		$page = intval(trim($_POST['currentpage']));
-		$data = Collection($keyword, '/'.$page);
+		#$data = Collection($keyword, '/'.$page);
+		$data = Collection($keyword, '&page='.$page);
 		$currentpage = $page;
 	} else {
-		$data = Collection($keyword, '/');
+		$data = Collection($keyword, '&page=1');
 		$currentpage = '1';
 	}
 	header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); 

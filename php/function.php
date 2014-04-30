@@ -113,22 +113,26 @@ function Collection($keyword, $page) {
 */
 function Get_search($keyword, $currentpage='', $collpage='', $key, $url) {
     $header = array();
-    $header[] = 'Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5';
-    $header[] = 'Cache-Control: max-age=0';
-    $header[] = 'Connection: keep-alive';
-    $header[] = 'Keep-Alive: 300';
-    $header[] = 'Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7';
-    $header[] = 'Accept-Language: en-us,en;q=0.5';
-    $header[] = 'Pragma: ';
+    $header[0] = "Accept: text/xml,application/xml,application/xhtml+xml,";
+    $header[0] .= "text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5";
+    $header[] = "Cache-Control: max-age=0";
+    $header[] = "Connection: keep-alive";
+    $header[] = "Keep-Alive: 300";
+    $header[] = "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7";
+    $header[] = "Accept-Language: en-us,en;q=0.5";
+    $header[] = "Pragma: "; //browsers keep this blank.
     
 	$curlPost = 'keyword='.urlencode($keyword).'&key='.urlencode($key).'&currentpage='.urlencode($currentpage);
 	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.3) Gecko/20070309 Firefox/2.0.0.3");
-	curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
+    curl_setopt($ch, CURLOPT_REFERER, 'http://www.google.com');
+    curl_setopt($ch, CURLOPT_AUTOREFERER, true);
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.2.3) Gecko/20100401 Firefox/3.6.3');
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 	curl_setopt($ch, CURLOPT_URL, $url.'search.php');
-	curl_setopt($ch, CURLOPT_HEADER, 1);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_HEADER, 0);
 	curl_setopt($ch, CURLOPT_POST, 1);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $curlPost);
 	$data = curl_exec($ch);

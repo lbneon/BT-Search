@@ -4,6 +4,7 @@ include 'function.php';
 if (!empty($_POST['keyword'])) {
 	$search_data_tmp = Get_search(htmlspecialchars(trim($_POST['keyword'])), '', '', $key, $SITE['url']);
 	$search_data = json_decode($search_data_tmp, true);
+	print($search_data['data']);
 	if (!isset($search_data['Error'])) {
 		$keyword = $search_data['keyword'];
 		$collpage = $search_data['collpage'];
@@ -101,18 +102,6 @@ if (!empty($_GET['magnetbt'])) {
     	?>
     </div>      
   </div>
-
-
-     <div class="row">
-      <div class="col-lg-12 col-lg">
-      	<h4>刚刚被搜索的词:</h4>
-      	<?php 
-      	foreach(Recentsearches() as $keyword_cont){
-      		echo '<a href="index.php?keyword='.$keyword_cont['tags'].'" class="label label-primary" target="_blank">'.$keyword_cont['tags'].'</a> ';
-      	} 
-      	?>
-      </div>      
-    </div>
 
     <!-- 刚刚搜索过的种子列表 -->
 	<div class="history">

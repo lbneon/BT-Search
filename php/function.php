@@ -118,9 +118,6 @@ function Get_search($keyword, $currentpage='', $collpage='', $key, $url) {
 	curl_setopt($ch, CURLOPT_POST, 1);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $curlPost);
 	$data = curl_exec($ch);
-	
-	$data['data'] = '3456';
-	
 	curl_close($ch);
 	return $data;
 }

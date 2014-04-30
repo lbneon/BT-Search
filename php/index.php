@@ -102,9 +102,6 @@ if (!empty($_GET['magnetbt'])) {
     </div>      
   </div>
 
-<?php
-  //if ($st == false) {
-?>
 
   <!-- 刚刚搜索过的种子列表 -->
   <div class="history">
@@ -190,9 +187,6 @@ if (!empty($_GET['magnetbt'])) {
   </div>
   <!-- 网站主体结束 -->
   
-  <?php
-    //}
-  ?>
   
   <!-- 底部 -->
   <div class="footer navbar-default">

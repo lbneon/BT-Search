@@ -26,7 +26,7 @@ $GLOBALS['DB'] = array(
 	'option' => array(PDO::ATTR_CASE => PDO::CASE_NATURAL)
 	);
 
-$SITE['url'] = "http://www.bubby.cf/"; //网站地址  注意,网址后面必须加上/
+$SITE['url'] = "http://www.bunny.cf/"; //网站地址  注意,网址后面必须加上/
 //$SITE['url'] = "http://btsearch-aera.rhcloud.com/"; //网站地址  注意,网址后面必须加上/
 $SITE['title'] = '兔子搜索_磁力种子搜索'; //网站标题
 $SITE['keywords'] = 'BT,BT种子,种子,种子搜索,BT搜索,资源搜'; //网站关键词

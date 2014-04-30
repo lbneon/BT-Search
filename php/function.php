@@ -53,7 +53,6 @@ function Curl_content($keyword, $page = '') {
 		$url = 'http://torrentkitty.org/search/';
 		$content = $curl->get($url.$keyword.$page);
 		$cache->set($keyword.$page, $content, 2592000);
-		$content = $curl->get('http://torrentkitty.org/search/%E6%9C%BA%E5%99%A8/');
 		return $content;
 	} else {
 		return $htmlconter;
@@ -97,11 +96,6 @@ function Collection($keyword, $page) {
 			$bt['url'] = "magnet:".$magnet_infos[$i]['1'];
 			$bt_json[$i] =$bt;
 		}
-		if ($content == null)
-		 return '111';
-		if ($content == "")
-		 return '222';
-		return '333' . $content;
 		return $bt_json;
 	} else {
 		return false;

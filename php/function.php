@@ -96,7 +96,7 @@ function Collection($keyword, $page) {
 			$bt['url'] = "magnet:".$magnet_infos[$i]['1'];
 			$bt_json[$i] =$bt;
 		}
-		return count($list['0']);
+		return count($list);
 		return $bt_json;
 	} else {
 		return false;

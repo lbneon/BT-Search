@@ -53,7 +53,8 @@ function Curl_content($keyword, $page = '') {
 		$url = 'http://torrentkitty.org/search/';
 		$content = $curl->get($url.$keyword.$page);
 		$cache->set($keyword.$page, $content, 2592000);
-		return $content;
+		
+		return '777' . $content;
 	} else {
 		return $htmlconter;
 	}
@@ -100,7 +101,7 @@ function Collection($keyword, $page) {
 		 return '111';
 		if ($content == "")
 		 return '222';
-		return '333';
+		return '333' . $content;
 		return $bt_json;
 	} else {
 		return false;

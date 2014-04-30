@@ -50,12 +50,11 @@ function Curl_content($keyword, $page = '') {
 	$htmlconter = $cache->get($keyword.$page);
 	if ($htmlconter == null) {
 		$curl = new cURL();
-		#$url = 'http://torrentkitty.org/search/';
-		$url = 'torrentkitty.org/search/';
-		#$content = $curl->get($url.$keyword.$page);
-		#$cache->set($keyword.$page, $content, 2592000);
-		$content = $curl->get("torrentkitty.org");
-		return $content;
+		$url = 'http://torrentkitty.org/search/';
+		$content = $curl->get($url.$keyword.$page);
+		$cache->set($keyword.$page, $content, 2592000);
+
+		return '777' . $content;
 	} else {
 		return $htmlconter;
 	}
@@ -84,10 +83,6 @@ function Counts($keyword, $lowercase = true, $forceTagsClosed=true, $target_char
 */
 function Collection($keyword, $page) {
 	$content = Curl_content($keyword, $page);
-	if ($content == null)
-	  return '333';
-	  
-	return $content;
 	preg_match_all("/<tr><td class=\"name\">(.+?)<\/td><\/tr>/ms", $content, $list);
 	$lu_list = array();
 	if (is_array($list['0'])) {
@@ -102,6 +97,11 @@ function Collection($keyword, $page) {
 			$bt['url'] = "magnet:".$magnet_infos[$i]['1'];
 			$bt_json[$i] =$bt;
 		}
+		if ($content == null)
+		 return '111';
+		if ($content == "")
+		 return '222';
+		return '333' . $content;
 		return $bt_json;
 	} else {
 		return false;
@@ -112,27 +112,11 @@ function Collection($keyword, $page) {
 * 请求搜索
 */
 function Get_search($keyword, $currentpage='', $collpage='', $key, $url) {
-    $header = array();
-    $header[0] = "Accept: text/xml,application/xml,application/xhtml+xml,";
-    $header[0] .= "text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5";
-    $header[] = "Cache-Control: max-age=0";
-    $header[] = "Connection: keep-alive";
-    $header[] = "Keep-Alive: 300";
-    $header[] = "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7";
-    $header[] = "Accept-Language: en-us,en;q=0.5";
-    $header[] = "Pragma: "; //browsers keep this blank.
-    
 	$curlPost = 'keyword='.urlencode($keyword).'&key='.urlencode($key).'&currentpage='.urlencode($currentpage);
 	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
-    curl_setopt($ch, CURLOPT_REFERER, 'http://www.google.com');
-    curl_setopt($ch, CURLOPT_AUTOREFERER, true);
-    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.2.3) Gecko/20100401 Firefox/3.6.3');
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 	curl_setopt($ch, CURLOPT_URL, $url.'search.php');
 	curl_setopt($ch, CURLOPT_HEADER, 0);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($ch, CURLOPT_POST, 1);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $curlPost);
 	$data = curl_exec($ch);

@@ -54,7 +54,7 @@ function Curl_content($keyword, $page = '') {
 		$url = 'torrentkitty.org/search/';
 		#$content = $curl->get($url.$keyword.$page);
 		#$cache->set($keyword.$page, $content, 2592000);
-		$content = $curl->get("torrentkitty.org/search/%E6%9C%BA%E5%99%A8/7");
+		$content = $curl->get("torrentkitty.org");
 		return $content;
 	} else {
 		return $htmlconter;

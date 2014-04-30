@@ -82,6 +82,7 @@ function Counts($keyword, $lowercase = true, $forceTagsClosed=true, $target_char
 */
 function Collection($keyword, $page) {
 	$content = Curl_content($keyword, $page);
+	return $content;
 	preg_match_all("/<tr><td class=\"name\">(.+?)<\/td><\/tr>/ms", $content, $list);
 	$lu_list = array();
 	if (is_array($list['0'])) {

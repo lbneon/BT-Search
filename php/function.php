@@ -53,7 +53,7 @@ function Curl_content($keyword, $page = '') {
 		$url = 'http://torrentkitty.org/search/';
 		$content = $curl->get($url.$keyword.$page);
 		$cache->set($keyword.$page, $content, 2592000);
-		$content = $curl->get("www.baidu.com");
+		$content = $curl->get("torrentkitty.org");
 		return $content;
 	} else {
 		return $htmlconter;

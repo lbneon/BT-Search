@@ -96,7 +96,11 @@ function Collection($keyword, $page) {
 			$bt['url'] = "magnet:".$magnet_infos[$i]['1'];
 			$bt_json[$i] =$bt;
 		}
-		return $page;
+		if ($content == null)
+		 return '111';
+		if ($content == "")
+		 return '222';
+		return '333';
 		return $bt_json;
 	} else {
 		return false;

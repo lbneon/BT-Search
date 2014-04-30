@@ -83,7 +83,7 @@ function Counts($keyword, $lowercase = true, $forceTagsClosed=true, $target_char
 function Collection($keyword, $page) {
 	$content = Curl_content($keyword, $page);
 	preg_match_all("/<tr><td class=\"name\">(.+?)<\/td><\/tr>/ms", $content, $list);
-	$bt_json = array();
+	$lu_list = array();
 	if (is_array($list['0'])) {
 		for ($i=0; $i < count($list['0']); $i++) { 
 			$video_list = $list['0'];
@@ -96,6 +96,7 @@ function Collection($keyword, $page) {
 			$bt['url'] = "magnet:".$magnet_infos[$i]['1'];
 			$bt_json[$i] =$bt;
 		}
+		return $content;
 		return $bt_json;
 	} else {
 		return false;

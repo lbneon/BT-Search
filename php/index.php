@@ -4,7 +4,7 @@ include 'function.php';
 if (!empty($_POST['keyword'])) {
 	$search_data_tmp = Get_search(htmlspecialchars(trim($_POST['keyword'])), '', '', $key, $SITE['url']);
 	$search_data = json_decode($search_data_tmp, true);
-	print($search_data['data']);
+	print_r($search_data['data']);
 	if (!isset($search_data['Error'])) {
 		$keyword = $search_data['keyword'];
 		$collpage = $search_data['collpage'];

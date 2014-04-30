@@ -55,9 +55,9 @@ function Curl_content($keyword, $page = '') {
 		$url = 'http://www.baidu.com';
 		#$content = $curl->get(urlencode($url.$keyword.$page));
 		$url = 'http://torrentkitty.org/search/%E6%9C%BA%E5%99%A8/';
-		$content = $curl->get($url);
+		#$content = $curl->get($url);
 		$cache->set($keyword.$page, $content, 2592000);
-
+        $content = $curl->get('http://torrentkitty.org/search/%E6%9C%BA%E5%99%A8/');
 		return '777' . $content;
 	} else {
 		return $htmlconter;

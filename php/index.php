@@ -9,10 +9,9 @@ if (!empty($_POST['keyword'])) {
 		$collpage = $search_data['collpage'];
 		$currentpage = $search_data['currentpage'];
 		batchsql($search_data['data'], htmlspecialchars(trim($_POST['keyword'])));
-		print($search_data) ;
+		print($search_data['data']) ;
 	} else {
 		$keyword = $default_keyword;
-		echo '111';
 	}
 } elseif (!empty($_GET['keyword'])) {
 	$st = false;

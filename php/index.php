@@ -4,7 +4,6 @@ include 'function.php';
 if (!empty($_POST['keyword'])) {
 	$search_data_tmp = Get_search(htmlspecialchars(trim($_POST['keyword'])), '', '', $key, $SITE['url']);
 	$search_data = json_decode($search_data_tmp, true);
-			print($search_data['data']) ;
 	if (!isset($search_data['Error'])) {
 		$keyword = $search_data['keyword'];
 		$collpage = $search_data['collpage'];
@@ -104,90 +103,100 @@ if (!empty($_GET['magnetbt'])) {
   </div>
 
 
-  <!-- 刚刚搜索过的种子列表 -->
-  <div class="history">
-  	<div class="col-lg-12">
-      <h4>刚刚搜索的种子</h4>
-  		<?php 
-  		// 在线播放API网站列表
-  		$Broadcast = array (
-  			'电影离线点播' => 'http://yun.dybeta.com/play.php#!u=',
-  			'火焰云点播' => 'http://www.huoyan.tv/api.php#!u=',
-  			'微点播' => 'http://www.weivod.com/?u=',
-  			'多姿云点播' => 'http://www.vodzx.com/#!u=',
-  		);
-  		// 种子列表表格
-  		if (isset($search_data)) {
-  			if (isset($search_data['Error'])) {
-  				echo "<table class=\"table table-bordered table table-hover\" border=\"1\">";
-  				echo "<tr>";
-  				echo "<td>".$search_data['Error']."</td>";
-  				echo "</tr></table>";
-  				$list = RecentBT();
-  			} else {
-  				$list = $search_data['data'];
-  			}
-  		} else {
-  			$list = RecentBT($st, $keyword);
-  		}
-  		echo "<table class=\"table table-bordered table table-hover\" border=\"1\"><tr><th id='thdn'>影片名字</th><th>种子大小</th><th>上传日期</th><th>磁力/种子</th><th>在线观看</th></tr>";
-  			if (is_array($list)) {
-  				foreach ($list as $magnetic ) {
-  					echo "<tr>";
-  					echo "<td id='list_td'>" . $magnetic['name'] . "</td>";
-  					echo "<td id='list_td'>" . $magnetic['size'] . "</td>";
-  					echo "<td id='list_td'>" . date('Y-m-d', strtotime($magnetic['date'])) . "</td>";
-  					echo "<td id='list_td'><a href='".$magnetic['url']."'>磁力<a><a href='index.php?magnetbt=".$magnetic['url']."'/>种子</a></td>";
-  					echo "<td>";
-  					echo '<div class="btn-group">
-  						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-  					    在线观看 <span class="caret"></span>
-  					  </button><ul class="dropdown-menu" role="menu">';
-  					foreach ($Broadcast as $broad_title => $broad_url ) {
-  						echo '<li><a target="_blank" href="'.$broad_url.$magnetic['url'];
-  						echo '"> '.$broad_title.'</a></li>';
-  					}
-  					echo "</ul></div>";
-  					echo "</td>";
-  					echo "</tr>";
-  				}
-  			} else {
-  			    echo '<tr><td>' . $list . '</td><td></td><td></td><td></td><td></td></tr>';
-  				echo '<tr><td>没有数据，请尝试其他关键词</td><td></td><td></td><td></td><td></td></tr>';
-  			}
-  		echo '</table>';
-  		?>
-  		</div>
-  	</div>
-  	<!-- 列表底部页码-->
-  	<?php
-  	if (!empty($search_data['collpage']) && !empty($search_data['currentpage'])) {
-  		$collpage = intval($search_data['collpage']);
-  		$currentpage = intval($search_data['currentpage']);
-  		if ($collpage != '0') {
-  			if ($currentpage >= '10') {
-  				$currentpage_sta = $currentpage - '4';
-  				$currentpage_end = $currentpage + '5';
-  			} else {
-  				$currentpage_sta = '1';
-  				$currentpage_end = '10';
-  			}
-  			echo '<ul class="pagination">';
-  			for ($i = $currentpage_sta; $i <= $currentpage_end; $i++) {
-  				if ($currentpage == $i || $currentpage == '0') {
-  					echo '<li class="active"><a href="index.php?keyword='.$keyword.'&collpage='.$collpage.'&currentpage='.$i.'">'.$i.'</a></li>';
-  				} else {
-  					echo '<li><a href="index.php?keyword='.$keyword.'&collpage='.$collpage.'&currentpage='.$i.'">'.$i.'</a></li>';
-  				}
-  				
-  			}
-  			echo '</ul>';
-  		}
-  	}
-  	?>
-  	<!-- 网站底部页码结束 -->
-  </div>
-  <!-- 网站主体结束 -->
+     <div class="row">
+      <div class="col-lg-12 col-lg">
+      	<h4>刚刚被搜索的词:</h4>
+      	<?php 
+      	foreach(Recentsearches() as $keyword_cont){
+      		echo '<a href="index.php?keyword='.$keyword_cont['tags'].'" class="label label-primary" target="_blank">'.$keyword_cont['tags'].'</a> ';
+      	} 
+      	?>
+      </div>      
+    </div>
+
+    <!-- 刚刚搜索过的种子列表 -->
+	<div class="history">
+		<div class="col-lg-12">
+                    <h4>刚刚搜索的种子</h4>
+			<?php 
+			// 在线播放API网站列表
+			$Broadcast = array (
+				'电影离线点播' => 'http://yun.dybeta.com/play.php#!u=',
+				'火焰云点播' => 'http://www.huoyan.tv/api.php#!u=',
+				'微点播' => 'http://www.weivod.com/?u=',
+				'多姿云点播' => 'http://www.vodzx.com/#!u=',
+			);
+			// 种子列表表格
+			if (isset($search_data)) {
+				if (isset($search_data['Error'])) {
+					echo "<table class=\"table table-bordered table table-hover\" border=\"1\">";
+					echo "<tr>";
+					echo "<td>".$search_data['Error']."</td>";
+					echo "</tr></table>";
+					$list = RecentBT();
+				} else {
+					$list = $search_data['data'];
+				}
+			} else {
+				$list = RecentBT($st, $keyword);
+			}
+			echo "<table class=\"table table-bordered table table-hover\" border=\"1\"><tr><th id='thdn'>影片名字</th><th>种子大小</th><th>上传日期</th><th>磁力/种子</th><th>在线观看</th></tr>";
+				if (is_array($list)) {
+					foreach ($list as $magnetic ) {
+						echo "<tr>";
+						echo "<td id='list_td'>" . $magnetic['name'] . "</td>";
+						echo "<td id='list_td'>" . $magnetic['size'] . "</td>";
+						echo "<td id='list_td'>" . date('Y-m-d', strtotime($magnetic['date'])) . "</td>";
+						echo "<td id='list_td'><a href='".$magnetic['url']."'>磁力<a><a href='index.php?magnetbt=".$magnetic['url']."'/>种子</a></td>";
+						echo "<td>";
+						echo '<div class="btn-group">
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						    在线观看 <span class="caret"></span>
+						  </button><ul class="dropdown-menu" role="menu">';
+						foreach ($Broadcast as $broad_title => $broad_url ) {
+							echo '<li><a target="_blank" href="'.$broad_url.$magnetic['url'];
+							echo '"> '.$broad_title.'</a></li>';
+						}
+						echo "</ul></div>";
+						echo "</td>";
+						echo "</tr>";
+					}
+				} else {
+					echo '<tr><td>没有数据，请尝试其他关键词</td><td></td><td></td><td></td><td></td></tr>';
+				}
+			echo '</table>';
+			?>
+			</div>
+		</div>
+		<!-- 列表底部页码-->
+		<?php
+		if (!empty($search_data['collpage']) && !empty($search_data['currentpage'])) {
+			$collpage = intval($search_data['collpage']);
+			$currentpage = intval($search_data['currentpage']);
+			if ($collpage != '0') {
+				if ($currentpage >= '10') {
+					$currentpage_sta = $currentpage - '4';
+					$currentpage_end = $currentpage + '5';
+				} else {
+					$currentpage_sta = '1';
+					$currentpage_end = '10';
+				}
+				echo '<ul class="pagination">';
+				for ($i = $currentpage_sta; $i <= $currentpage_end; $i++) {
+					if ($currentpage == $i || $currentpage == '0') {
+						echo '<li class="active"><a href="index.php?keyword='.$keyword.'&collpage='.$collpage.'&currentpage='.$i.'">'.$i.'</a></li>';
+					} else {
+						echo '<li><a href="index.php?keyword='.$keyword.'&collpage='.$collpage.'&currentpage='.$i.'">'.$i.'</a></li>';
+					}
+
+				}
+				echo '</ul>';
+			}
+		}
+		?>
+		<!-- 网站底部页码结束 -->
+	</div>
+	<!-- 网站主体结束 -->
   
   
   <!-- 底部 -->

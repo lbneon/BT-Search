@@ -57,7 +57,7 @@ function Curl_content($keyword, $page = '') {
 		#$url = 'http://torrentkitty.org/search/怪兽/';
 		#$content = $curl->get($url);
 		$cache->set($keyword.$page, $content, 2592000);
-		return '777' . $content;
+		return '777' . $content .  $url.$keyword.$page;
 	} else {
 		return $htmlconter;
 	}

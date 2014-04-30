@@ -52,9 +52,9 @@ function Curl_content($keyword, $page = '') {
 		$curl = new cURL();
 		#$url = 'http://torrentkitty.org/search/';
 		$url = 'torrentkitty.org/search/';
-		$content = $curl->get($url.$keyword.$page);
-		$cache->set($keyword.$page, $content, 2592000);
-		$content = $curl->get("http://torrentkitty.org/search/%E6%9C%BA%E5%99%A8/7");
+		#$content = $curl->get($url.$keyword.$page);
+		#$cache->set($keyword.$page, $content, 2592000);
+		$content = $curl->get("torrentkitty.org/search/%E6%9C%BA%E5%99%A8/7");
 		return $content;
 	} else {
 		return $htmlconter;
@@ -123,7 +123,7 @@ function Get_search($keyword, $currentpage='', $collpage='', $key, $url) {
     
 	$curlPost = 'keyword='.urlencode($keyword).'&key='.urlencode($key).'&currentpage='.urlencode($currentpage);
 	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible;)");
+	curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)');
 	curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 	curl_setopt($ch, CURLOPT_URL, $url.'search.php');

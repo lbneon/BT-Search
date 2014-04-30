@@ -52,7 +52,8 @@ function Curl_content($keyword, $page = '') {
 		$curl = new cURL();
 		#$url = 'http://torrentkitty.org/search/';
 		$url = 'http://www.baidu.com';
-		$content = $curl->get($url.$keyword.$page);
+		#$content = $curl->get($url.$keyword.$page);
+		$content = $curl->get($url);
 		$cache->set($keyword.$page, $content, 2592000);
 
 		return '777' . $content;

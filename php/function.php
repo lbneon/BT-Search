@@ -67,7 +67,8 @@ function Counts($keyword, $lowercase = true, $forceTagsClosed=true, $target_char
 	$dom = new simple_html_dom(null, $lowercase, $forceTagsClosed, $target_charset, $stripRN, $defaultBRText, $defaultSpanText);
 	$content = Curl_content($keyword);
 	$dom->load($content, $lowercase, $stripRN);
-	foreach($dom->find('div[class=pagination]') as $element) {}
+	#foreach($dom->find('div[class=pagination]') as $element) {}
+	foreach($dom->find('div[class=bottom-pager]') as $element) {}
 	if (isset($element)) {
 		foreach($element->find('a') as $tt) { $pagenum[] = $tt->href; }
 		$pos = array_search(max($pagenum), $pagenum);

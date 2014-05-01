@@ -103,12 +103,12 @@ function Collection($keyword, $page) {
 	}*/
 	
 	preg_match_all("/<div class=\"search-item\">(.+?)<\/div>(.+?)<\/div>(.+?)<\/div>(.+?)<\/div>/ms", $content, $list);
-	return $list;
 	$lu_list = array();
 	if (is_array($list['0'])) {
 		for ($i=0; $i < count($list['0']); $i++) {
 			$video_list = $list['0'];
 			preg_match_all("/<div(.[^>]*)>(.+?)<\/div>/ms", $video_list[$i], $video_info[]);
+			return $video_list[$i];
 			preg_match ("/href=\"magnet:(.+?)\"/ms", $video_info['0']['2'], $magnet_infos[]);
 			$bt = array();
 			preg_match_all("/<a(.[^>]*)>(.+?)<\/a>/ms", $video_info[$i]['2']['0'], $video_info_title[]);

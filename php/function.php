@@ -105,17 +105,16 @@ function Collection($keyword, $page) {
 	preg_match_all("/<div class=\"search-item\">(.+?)<\/div>(.+?)<\/div>(.+?)<\/div>(.+?)<\/div>/ms", $content, $list);
 	$lu_list = array();
 	if (is_array($list['0'])) {
+	    $video_list = $list['0'];
 		for ($i=0; $i < count($list['0']); $i++) {
-			$video_list = $list['0'];
 			preg_match_all("/<div(.[^>]*)>(.+?)<\/div>/ms", $video_list[$i], $video_info[]);
-			return  $video_info;
-			preg_match ("/href=\"magnet:(.+?)\"/ms", $video_info['0']['2'], $magnet_infos[]);
+			preg_match ("/href=\"magnet:(.+?)\"/ms", $video_info['2']['2'], $magnet_infos[]);
 			$bt = array();
-			preg_match_all("/<a(.[^>]*)>(.+?)<\/a>/ms", $video_info[$i]['2']['0'], $video_info_title[]);
-			$bt['name'] = $video_info_title[$i]['2']['0']; //$video_info[$i]['2']['0'];
-			preg_match_all("/<span>(.+?)<\/span>/ms", $video_info[$i]['2']['2'], $video_info_detail[]);
-			$bt['size'] = $video_info[$i]['2']['1'];
-			$bt['date'] = '222';//$video_info_detail[$i]['2']['0'];
+			preg_match_all("/<a(.[^>]*)>(.+?)<\/a>/ms", $video_info['2']['0'], $video_info_title[]);
+			$bt['name'] = $video_info_title['2']['0'];
+			preg_match_all("/<span>(.+?)<\/span>/ms", $video_info['2']['2'], $video_info_detail[]);
+			$bt['size'] = $video_info_detail['2']['1'];
+			$bt['date'] = $video_info_detail['2']['0'];
 			$bt['url'] = "magnet:".$magnet_infos['0']['0'];
 			$bt_json[$i] =$bt;
 		}

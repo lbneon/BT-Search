@@ -118,6 +118,7 @@ function Collection($keyword, $page) {
 			$bt['url'] = "magnet:".$magnet_infos['0']['0'];
 			$bt_json[$i] =$bt;
 		}
+		return $list;
 		return $bt_json;
 	} else {
 		return false;

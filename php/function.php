@@ -115,7 +115,7 @@ function Collection($keyword, $page) {
 			preg_match_all("/<span>(.+?)<\/span>/ms", $video_info[$i]['2']['2'], $video_info_detail[]);
 			$bt['size'] = $video_info[$i]['2']['1'];
 			$bt['date'] = '222';//$video_info_detail[$i]['2']['0'];
-			$bt['url'] = "magnet:".$magnet_infos[$i]['1'];
+			$bt['url'] = "magnet:".$magnet_infos['0']['0'];
 			$bt_json[$i] =$bt;
 		}
 		return $bt_json;

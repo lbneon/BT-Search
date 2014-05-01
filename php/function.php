@@ -11,8 +11,8 @@ include 'class/phpfastcache/phpfastcache.php';
 function Recentsearches() {
 	$medoo = new medoo($GLOBALS['DB']);
 	$searches_keyword = $medoo->query("select tags from bt_tags order by id desc limit 60")->fetchAll();
-	$medoo->query("delete from tags as mytable where datediff(now(), mytable.createtime) > 5");
-	$medoo->query("delete from bt_data as mytable where datediff(now(), mytable.createtime) > 5");
+	$medoo->query("delete from tags as mytable where mytable.createtime < DATE_SUB(NOW(), INTERVAL 10 DAY)");
+	$medoo->query("delete from bt_data as mytable where mytable.createtime < DATE_SUB(NOW(), INTERVAL 10 DAY)");
 	return $searches_keyword;
 }
 

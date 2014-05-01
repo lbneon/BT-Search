@@ -109,6 +109,7 @@ function Collection($keyword, $page) {
 		for ($i=0; $i < count($list['0']); $i++) {
 			preg_match_all("/<div(.[^>]*)>(.+?)<\/div>/ms", $video_list[$i], $video_info[]);
 			preg_match ("/href=\"magnet:(.+?)\"/ms", $video_info['2']['2'], $magnet_infos[]);
+			return $video_info;
 			$bt = array();
 			preg_match_all("/<a(.[^>]*)>(.+?)<\/a>/ms", $video_info['2']['0'], $video_info_title[]);
 			$bt['name'] = $video_info_title['2']['0'];

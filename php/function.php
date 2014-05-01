@@ -112,11 +112,11 @@ function Collection($keyword, $page) {
 			#if($i==1) return $video_info;
 			$bt = array();
 			preg_match_all("/<a(.[^>]*)>(.+?)<\/a>/ms", $video_info[$i][2][0], $video_info_title[]);
-			$bt['name'] = $video_info_title[0][2][0];
+			$bt['name'] = $video_info_title[$i][2][0];
 			preg_match_all("/<b>(.+?)<\/b>/ms", $video_info[$i][2][2], $video_info_detail);
 			$bt['size'] = $video_info_detail[1][1];
 			$bt['date'] = $video_info_detail[1][0];
-			$bt['url'] = "magnet:".$magnet_infos[0][1];
+			$bt['url'] = "magnet:".$magnet_infos[$i][1];
 			$bt_json[$i] =$bt;
 		}
 		

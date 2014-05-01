@@ -12,7 +12,7 @@ function Recentsearches() {
 	$medoo = new medoo($GLOBALS['DB']);
 	//$expiretime = time() - 1 * 60 * 60 * 24 * 5; //5 days
 	//return $expiretime;
-	$medoo->query("delete from tags where TIMESTAMPDIFF(HOUR,`createtime`,CURRENT_TIMESTAMP())> 48");
+	$medoo->query("delete from bt_tags where TIMESTAMPDIFF(HOUR,`createtime`,CURRENT_TIMESTAMP())> 48");
 	$medoo->query("delete from bt_data where TIMESTAMPDIFF(HOUR,`createtime`,CURRENT_TIMESTAMP())> 48");
 	$searches_keyword = $medoo->query("select tags from bt_tags order by id desc limit 60")->fetchAll();
 	return $searches_keyword;

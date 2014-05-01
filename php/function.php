@@ -112,7 +112,7 @@ function Collection($keyword, $page) {
 			$bt = array();
 			preg_match_all("/<a(.[^>]*)>(.+?)<\/a>/ms", $video_info[$i]['2']['0'], $video_info_title[]);
 			$bt['name'] = $video_info_title[$i]['2']['0']; //$video_info[$i]['2']['0'];
-			preg_match_all("/<span(.[^>]*)>(.+?)<\/span>/ms", $video_info[$i]['2']['2'], $video_info_detail[]);
+			preg_match_all("/<span>(.+?)<\/span>/ms", $video_info[$i]['2']['2'], $video_info_detail[]);
 			$bt['size'] = $video_info_detail[$i]['2']['1'];
 			$bt['date'] = '222';//$video_info_detail[$i]['2']['0'];
 			$bt['url'] = "magnet:".$magnet_infos[$i]['1'];

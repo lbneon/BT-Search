@@ -19,24 +19,27 @@ if (!empty($_POST['keyword']) && $_POST['key'] == $key) {
 	// 将搜索词写到数据库
 	$medoo = new medoo($GLOBALS['DB']);
 	$medoo->insert("bt_tags", array('tags' => $str_temp));
-	// 计算页数
 
-	if (!isset($_POST['collpage'])) {
-		$Coll_Page = Counts($keyword);
-	} else {
-		$Coll_Page = '0';
-	}
-
+    $pagestr = '&page=1';
 	// 如果没有指定当前页则默认采集一页
 	if (!empty($_POST['currentpage'])) {
 		$page = intval(trim($_POST['currentpage']));
 		#$data = Collection($keyword, '/'.$page);
-		$data = Collection($keyword, '&page='.$page);
+		$pagestr = '&page='.$page;
+		$data = Collection($keyword, $pagestr);
 		$currentpage = $page;
 	} else {
-		$data = Collection($keyword, '&page=1');
+		$data = Collection($keyword, $pagestr);
 		$currentpage = '1';
 	}
+	
+	// 计算页数
+	if (!isset($_POST['collpage'])) {
+		$Coll_Page = Counts($keyword, $pagestr);
+	} else {
+		$Coll_Page = '0';
+	}
+	
 	header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); 
 	header("Last-Modified: ".gmdate("D, d M Y H:i:s")." GMT"); 
 	header("Cache-Control: no-cache, must-revalidate"); 

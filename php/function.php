@@ -63,9 +63,9 @@ function Curl_content($keyword, $page = '') {
 /*
 * 计算翻页页数
 */
-function Counts($keyword, $lowercase = true, $forceTagsClosed=true, $target_charset = DEFAULT_TARGET_CHARSET, $stripRN=true, $defaultBRText=DEFAULT_BR_TEXT, $defaultSpanText=DEFAULT_SPAN_TEXT) {
+function Counts($keyword, $page, $lowercase = true, $forceTagsClosed=true, $target_charset = DEFAULT_TARGET_CHARSET, $stripRN=true, $defaultBRText=DEFAULT_BR_TEXT, $defaultSpanText=DEFAULT_SPAN_TEXT) {
 	$dom = new simple_html_dom(null, $lowercase, $forceTagsClosed, $target_charset, $stripRN, $defaultBRText, $defaultSpanText);
-	$content = Curl_content($keyword);
+	$content = Curl_content($keyword, $page);
 	$dom->load($content, $lowercase, $stripRN);
 	#foreach($dom->find('div[class=pagination]') as $element) {}
 	foreach($dom->find('div[class=bottom-pager]') as $element) {}
@@ -76,7 +76,6 @@ function Counts($keyword, $lowercase = true, $forceTagsClosed=true, $target_char
 		    preg_match("/page=(.+?)&amp;q=/ms", $hrefstr, $result);
 		    $pagenum[] = $result[1]; 
 		}
-		return $pagenum;
 		$pos = array_search(max($pagenum), $pagenum);
 		$dom->clear();
 		return $pagenum[$pos];

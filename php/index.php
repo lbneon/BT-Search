@@ -160,7 +160,7 @@ if (!empty($_GET['magnetbt'])) {
 		</div>
 		<!-- 列表底部页码-->
 		<?php
-		print_r($search_data['collpage']);
+		#print_r($search_data['collpage']);
 		if (!empty($search_data['collpage']) && !empty($search_data['currentpage'])) {
 			$collpage = intval($search_data['collpage']);
 			$currentpage = intval($search_data['currentpage']);
@@ -172,6 +172,7 @@ if (!empty($_GET['magnetbt'])) {
 					$currentpage_sta = '1';
 					$currentpage_end = '10';
 				}
+				if ($currentpage_end > $collpage) $currentpage_end = $collpage;
 				echo '<ul class="pagination">';
 				for ($i = $currentpage_sta; $i <= $currentpage_end; $i++) {
 					if ($currentpage == $i || $currentpage == '0') {

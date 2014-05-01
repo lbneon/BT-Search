@@ -106,6 +106,7 @@ function Collection($keyword, $page) {
 	$lu_list = array();
 	if (is_array($list['0'])) {
 	    $video_list = $list['0'];
+	    return $video_list;
 		for ($i=0; $i < count($list['0']); $i++) {
 			preg_match_all("/<div(.[^>]*)>(.+?)<\/div>/ms", $video_list[$i], $video_info[]);
 			preg_match ("/href=\"magnet:(.+?)\"/ms", $video_info[0][2][2], $magnet_infos[]);
@@ -113,7 +114,7 @@ function Collection($keyword, $page) {
 			preg_match_all("/<a(.[^>]*)>(.+?)<\/a>/ms", $video_info[0][2][0], $video_info_title[]);
 			$bt['name'] = $video_info_title[0][2][0];
 			preg_match_all("/<b>(.+?)<\/b>/ms", $video_info[0][2][2], $video_info_detail);
-			$bt['size'] = $video_info_detail_size[1][1];
+			$bt['size'] = $video_info_detail[1][1];
 			$bt['date'] = $video_info_detail[1][0];
 			$bt['url'] = "magnet:".$magnet_infos[0][1];
 			$bt_json[$i] =$bt;

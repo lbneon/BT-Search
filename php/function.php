@@ -54,7 +54,7 @@ function Curl_content($keyword, $page = '') {
 		$url = 'http://btso.7ibt.com/search?q=';
 		$content = $curl->get($url.$keyword.$page);
 		$cache->set($keyword.$page, $content, 2592000);
-		return '777' . $content .  $url.$keyword.$page;
+		return $content;
 	} else {
 		return $htmlconter;
 	}
@@ -83,7 +83,7 @@ function Counts($keyword, $lowercase = true, $forceTagsClosed=true, $target_char
 */
 function Collection($keyword, $page) {
 	$content = Curl_content($keyword, $page);
-	preg_match_all("/<tr><td class=\"name\">(.+?)<\/td><\/tr>/ms", $content, $list);
+	/*preg_match_all("/<tr><td class=\"name\">(.+?)<\/td><\/tr>/ms", $content, $list);
 	$lu_list = array();
 	if (is_array($list['0'])) {
 		for ($i=0; $i < count($list['0']); $i++) { 
@@ -97,11 +97,25 @@ function Collection($keyword, $page) {
 			$bt['url'] = "magnet:".$magnet_infos[$i]['1'];
 			$bt_json[$i] =$bt;
 		}
-		if ($content == null)
-		 return '111';
-		if ($content == "")
-		 return '222';
-		return '333' . $content;
+		return $bt_json;
+	} else {
+		return false;
+	}*/
+	
+	preg_match_all("/<div class=\"search-item\">(.+?)<\/div>/ms", $content, $list);
+	$lu_list = array();
+	if (is_array($list['0'])) {
+		for ($i=0; $i < count($list['0']); $i++) {
+			$video_list = $list['0'];
+			preg_match_all("/<div(.[^>]*)>(.+?)<\/div>/ms", $video_list[$i], $video_info[]);
+			preg_match ("/href=\"magnet:(.+?)\"/ms", $video_info[$i]['2']['2'], $magnet_infos[]);
+			$bt = array();
+			$bt['name'] = $video_info[$i]['2']['0'];
+			$bt['size'] = $video_info[$i]['2']['1'];
+			$bt['date'] = $video_info[$i]['2']['2'];
+			$bt['url'] = "magnet:".$magnet_infos[$i]['1'];
+			$bt_json[$i] =$bt;
+		}
 		return $bt_json;
 	} else {
 		return false;

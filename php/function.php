@@ -102,7 +102,7 @@ function Collection($keyword, $page) {
 		return false;
 	}*/
 	
-	preg_match_all("/<div class=\"search-item\">(.+?)<\/div>/ms", $content, $list);
+	preg_match_all("/<div class=\"search-item\">(.+?)<\/div>(.+?)<\/div>(.+?)<\/div>(.+?)<\/div>/ms", $content, $list);
 	return $list;
 	$lu_list = array();
 	if (is_array($list['0'])) {

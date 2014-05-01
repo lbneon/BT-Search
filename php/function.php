@@ -74,7 +74,7 @@ function Counts($keyword, $lowercase = true, $forceTagsClosed=true, $target_char
 		foreach($element->find('a') as $tt) { 
 		    $hrefstr = $tt->href;
 		    preg_match ("/page=(.+?)&q=/ms", $hrefstr, $result);
-		    return $result;
+		    return $hrefstr;
 		    $pagenum[] = $result; 
 		}
 		$pos = array_search(max($pagenum), $pagenum);

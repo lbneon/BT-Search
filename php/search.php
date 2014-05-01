@@ -18,7 +18,7 @@ if (!empty($_POST['keyword']) && $_POST['key'] == $key) {
 	$keyword = urldecode($str_temp);
 	// 将搜索词写到数据库
 	$medoo = new medoo($GLOBALS['DB']);
-	$medoo->insert("bt_tags", array('tags' => $str_temp));
+	$medoo->insert("bt_tags", array('tags' => $str_temp, 'createtime' => date("Y-m-d H:i:s")));
 
     $pagestr = '&page=1';
 	// 如果没有指定当前页则默认采集一页

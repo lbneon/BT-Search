@@ -71,6 +71,7 @@ INSERT INTO `bt_data` (`tid`, `name`, `size`, `date`, `createtime`, `tag`, `url`
 CREATE TABLE IF NOT EXISTS `bt_tags` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `tags` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
+  `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   UNIQUE KEY `id` (`id`),
   UNIQUE KEY `tags` (`tags`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
@@ -79,10 +80,10 @@ CREATE TABLE IF NOT EXISTS `bt_tags` (
 -- 转存表中的数据 `bt_tags`
 --
 
-INSERT INTO `bt_tags` (`id`, `tags`) VALUES
-(13, '机械战警'),
-(12, '完美世界'),
-(11, '中');
+INSERT INTO `bt_tags` (`id`, `tags`, `createtime`) VALUES
+(13, '机械战警', '2014-03-11 12:46:22'),
+(12, '完美世界', '2014-03-11 12:46:22'),
+(11, '中', '2014-03-11 12:46:22');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

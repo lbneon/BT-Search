@@ -160,7 +160,7 @@ if (!empty($_GET['magnetbt'])) {
 		</div>
 		<!-- 列表底部页码-->
 		<?php
-		print_r($search_data['currentpage']);
+		print_r($search_data['collpage']);
 		if (!empty($search_data['collpage']) && !empty($search_data['currentpage'])) {
 			$collpage = intval($search_data['collpage']);
 			$currentpage = intval($search_data['currentpage']);

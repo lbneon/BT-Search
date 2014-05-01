@@ -135,7 +135,8 @@ if (!empty($_GET['magnetbt'])) {
 						echo "<tr>";
 						echo "<td id='list_td'>" . $magnetic['name'] . "</td>";
 						echo "<td id='list_td'>" . $magnetic['size'] . "</td>";
-						echo "<td id='list_td'>" . date('Y-m-d', strtotime($magnetic['date'])) . "</td>";
+						#echo "<td id='list_td'>" . date('Y-m-d', strtotime($magnetic['date'])) . "</td>";
+						echo "<td id='list_td'>" . $magnetic['date'] . "</td>";
 						echo "<td id='list_td'><a href='".$magnetic['url']."'>磁力<a><a href='index.php?magnetbt=".$magnetic['url']."'/>种子</a></td>";
 						echo "<td>";
 						echo '<div class="btn-group">

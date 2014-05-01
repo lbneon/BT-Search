@@ -70,7 +70,12 @@ function Counts($keyword, $lowercase = true, $forceTagsClosed=true, $target_char
 	#foreach($dom->find('div[class=pagination]') as $element) {}
 	foreach($dom->find('div[class=bottom-pager]') as $element) {}
 	if (isset($element)) {
-		foreach($element->find('a') as $tt) { $pagenum[] = $tt->href; }
+		//foreach($element->find('a') as $tt) { $pagenum[] = $tt->href; }
+		foreach($element->find('a') as $tt) { 
+		    $hrefstr = $tt->href;
+		    preg_match ("/page=(.+?)&q=", $hrefstr, $result);
+		    $pagenum[] = $result; 
+		}
 		$pos = array_search(max($pagenum), $pagenum);
 		$dom->clear();
 		return $pagenum[$pos];

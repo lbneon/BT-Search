@@ -83,7 +83,7 @@ if(isset($_GET['error'])) {
 
   <div class="navbar footer navbar-fixed-bottom">
     <span id="fsr">
-       <span class="_le" >© 2014 BT-SS.com</span>
+       <span class="_le" >© 2014 Bunny.CF</span>
      </span>
 
     <span id="fsl">
@@ -111,8 +111,7 @@ if(isset($_GET['error'])) {
           <hr>
           
           <h3>建议反馈</h3>
-            邮件联系：Kslrwang@gmail.com<br>
-            QQ群：207302852
+            邮件联系：evimacsl@gmail.com<br>
 
       </div>
       <div class="modal-footer">

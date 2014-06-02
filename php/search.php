@@ -68,14 +68,15 @@ if (!empty($_GET['keyword'])) {
 
     <!-- 搜索结果页广告 -->
     <div class="ad970">
-    	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<ins class="adsbygoogle"
-		     style="display:inline-block;width:970px;height:90px"
-		     data-ad-client="ca-pub-7279075760253335"
-		     data-ad-slot="3609935756"></ins>
-		<script>
-		(adsbygoogle = window.adsbygoogle || []).push({});
-		</script>
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Large Leaderboard -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:970px;height:90px"
+             data-ad-client="ca-pub-3611453243513390"
+             data-ad-slot="9984022465"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
     </div>
 
 

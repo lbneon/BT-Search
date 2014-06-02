@@ -52,7 +52,7 @@ if(isset($_GET['error'])) {
 	</div><!-- /content -->
 
 	<div data-role="footer" data-position="fixed">
-		<p>@ BT-SS.com 版权所有</p>
+		<p>@ Bunny.CF 版权所有</p>
 	</div>
 
 </div><!-- /page -->

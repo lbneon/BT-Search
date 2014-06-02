@@ -49,7 +49,7 @@ $dwz = create_dwz($siteconf['url'].'info.php?magnetic='.$_GET['magnetic'], $dwzc
    </div><!-- /content -->
 
   <div data-role="footer" data-position="fixed">
-    <p>@ BT-SS.com 版权所有</p>
+    <p>@ Bunny.CF 版权所有</p>
   </div>
 
 </div><!-- /page -->

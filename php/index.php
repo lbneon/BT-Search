@@ -89,7 +89,6 @@ if(isset($_GET['error'])) {
     <span id="fsl">
       <a class="_le" data-toggle="modal" data-target="#ad" style="text-decoration:none;">合作/广告/反馈</a>
       <a class="_le" style="color:rgb(202, 24, 24); margin-left:10px;" target="_blank" href="<?php echo $siteconf['url'].'/m'; ?>">移动网站</a>
-      <a class="_le" style="margin-left:10px;" target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=d1a3001b426c8e2afd7bc6eb4e788349993e719957bcaa8afea8107eb0a5f0eb"><img border="0" src="https://www.bt-ss.com/public/images/group.png" alt="BT-SS用户交流" title="BT-SS用户交流"></a>
     </span>
   </div>
 </div>

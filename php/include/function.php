@@ -197,16 +197,25 @@ function search_log($msg)
 /**
 * 生成信息页短地址
 */
-function create_dwz($url, $conf)
+function create_dwz($url)
 {
-	$urldata = $conf['url'].'api.php?action=create&skey='.$conf['skey'].'&url='.$url;
 	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, $urldata);  
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
-	$output = curl_exec($ch);
-	$url_obj = json_decode($output);
-
-	return $conf['url'].$url_obj->short;
+	curl_setopt($ch, CURLOPT_URL, 'http://dwz.soubt.org/api/create/');
+	curl_setopt($ch, CURLOPT_HEADER, 0);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_POST, 1);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, array('url' => $url));
+	$curl_result = curl_exec($ch);
+	if ($curl_result == FALSE) {
+		return curl_error($ch);
+	} else {
+		$result_data = json_decode($curl_result, TRUE);
+		if ($result_data['statusCode'] == '000000') {
+			return $result_data['url'];
+		} else {
+			return $result_data['error'];
+		}
+	}
+	curl_close($ch);
 
 }

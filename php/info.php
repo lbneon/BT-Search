@@ -19,16 +19,9 @@ if (isset($info['error'])) {
   exit();
 }
 
-// 添加到数据库队列
-// if ($message_queue['status'] === FALSE) {
-//     $qsinfo = $info;
-//     unset($qsinfo['list']);
-//     $httpsqs = new httpsqs($message_queue['conf']['host'], $message_queue['conf']['port'], $message_queue['conf']['passwd'], $message_queue['conf']['charset']);
-//     $httpsqs->put("bt", urlencode(json_encode($qsinfo))); 
-// }
 
 // 创建短地址
-$dwz = create_dwz($siteconf['url'].'info.php?magnetic='.$_GET['magnetic'], $dwzconf);
+$dwz = create_dwz($siteconf['url'].'info.php?magnetic='.$_GET['magnetic']);
 ?>
 <div class="container">
 	<!-- 网站导航栏 -->

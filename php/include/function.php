@@ -11,7 +11,7 @@ function Popular_keywords()
     $content = $cache->get('Popularkeywords');
         if (!$content) {
             $html = file_get_contents($url);
-            $cont = json_decode(iconv("gb2312", "utf-8//IGNORE",$html));
+            $cont = json_decode(iconv("gb18030", "utf-8//IGNORE",$html));
             foreach ($cont as $key => $value) {
                 foreach ($value as $value) {
                     $content[] = $value->filmName;

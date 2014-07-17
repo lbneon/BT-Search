@@ -114,18 +114,20 @@ include 'function.php';
       <input name="keyword" class="form-control" autofocus="autofocus"  placeholder="<?php echo $default_keyword; ?>" x-webkit-speech lang='zh-CN' required="required"/>
       <button class="btn search_btn" aria-label="搜一下" id="search_btn"><span>搜索</span></button>
       </form>
-  </div>
-  
-  <!-- 顶部刚搜索的关键词 -->
-  <div class="row">
-    <div class="col-lg-12 col-lg">
-    	<h4>刚刚被搜索的词:</h4>
-    	<?php 
-    	  foreach(Recentsearches() as $keyword_cont){
-    		echo '<a href="index.php?keyword='.$keyword_cont['tags'].'" class="label label-primary" target="_blank">'.$keyword_cont['tags'].'</a> ';
-    	  } 
-    	?>
-    </div>      
+      
+      
+      <!-- 顶部刚搜索的关键词 -->
+      <div class="row">
+        <div class="col-lg-12 col-lg">
+        	<h4>刚刚被搜索的词:</h4>
+        	<?php 
+        	  foreach(Recentsearches() as $keyword_cont){
+        		echo '<a href="search.php?keyword='.$keyword_cont['tags'].'" class="label label-primary" target="_blank">'.$keyword_cont['tags'].'</a> ';
+        	  } 
+        	?>
+        </div>      
+      </div>
+      
   </div>
 
   <div class="navbar footer navbar-fixed-bottom">

@@ -121,9 +121,9 @@ include 'function.php';
     <div class="col-lg-12 col-lg">
     	<h4>刚刚被搜索的词:</h4>
     	<?php 
-    	foreach(Recentsearches() as $keyword_cont){
+    	  foreach(Recentsearches() as $keyword_cont){
     		echo '<a href="index.php?keyword='.$keyword_cont['tags'].'" class="label label-primary" target="_blank">'.$keyword_cont['tags'].'</a> ';
-    	} 
+    	  } 
     	?>
     </div>      
   </div>

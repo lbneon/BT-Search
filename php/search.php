@@ -12,6 +12,8 @@
 include dirname(__FILE__).'/config.php';
 include APP_ROOT.'/include/core.php';
 include APP_ROOT.'/include/template/header.php';
+// keywords records
+include 'function.php';
 
 if (!empty($_GET['keyword'])) {
 	$str_temp = strip_tags(trim($_GET['keyword']));

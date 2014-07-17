@@ -21,6 +21,9 @@ if (!empty($_GET['keyword'])) {
 	}
 
 	$keyword = urldecode($str_temp);
+	// 将搜索词写到数据库
+	$medoo = new medoo($GLOBALS['DB']);
+	$medoo->insert("bt_tags", array('tags' => $str_temp, 'createtime' => date("Y-m-d H:i:s")));
 
 	if (!empty($_GET['counts']) && !empty($_GET['page'])) {
 		# 页码请求

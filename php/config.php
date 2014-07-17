@@ -12,6 +12,37 @@
 define('IN_SYS', TRUE);
 define("APP_ROOT", dirname(__FILE__));
 
+// ========== 数据库配置 ==========
+
+define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST'));
+define('DB_PORT', getenv('OPENSHIFT_MYSQL_DB_PORT'));
+define('DB_USER', getenv('OPENSHIFT_MYSQL_DB_USERNAME'));
+define('DB_PASS', getenv('OPENSHIFT_MYSQL_DB_PASSWORD'));
+define('DB_NAME', getenv('OPENSHIFT_GEAR_NAME'));
+
+$dbhost = constant("DB_HOST"); // Host name 
+$dbport = constant("DB_PORT"); // Host port
+$dbusername = constant("DB_USER"); // Mysql username 
+$dbpassword = constant("DB_PASS"); // Mysql password 
+$db_name = constant("DB_NAME"); // Database name 
+
+
+$GLOBALS['DB'] = array(
+	'database_type' => 'mysql',
+	'database_name' => $db_name,
+	'server' => $dbhost,
+	'username' => $dbusername,
+	'password' => $dbpassword,
+	'port' => $dbport,
+	'charset' => 'utf8',
+	'option' => array(PDO::ATTR_CASE => PDO::CASE_NATURAL)
+	);
+
+
+
+
+
+
 /* 
 *   网站信息
 */

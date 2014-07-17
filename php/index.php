@@ -36,6 +36,41 @@ if(isset($_GET['error'])) {
   $default_keyword = $siteconf['default_keyword'];
 }
 
+
+// keywords records
+include 'function.php';
+  if (!empty($_POST['keyword'])) {
+  	$search_data_tmp = Get_search(htmlspecialchars(trim($_POST['keyword'])), '', '', $key, $SITE['url']);
+  	$search_data = json_decode($search_data_tmp, true);
+  	print_r($search_data['data']);
+  	if (!isset($search_data['Error'])) {
+  		$keyword = $search_data['keyword'];
+  		$collpage = $search_data['collpage'];
+  		$currentpage = $search_data['currentpage'];
+  		batchsql($search_data['data'], htmlspecialchars(trim($_POST['keyword'])));
+  	} else {
+  		$keyword = $default_keyword;
+  	}
+  } elseif (!empty($_GET['keyword'])) {
+  	$st = false;
+  	$keyword = htmlspecialchars(trim($_GET['keyword']));
+  } else {
+  	$st = true;
+  	$keyword = null;
+  }
+  
+  if (!empty($_GET['keyword']) && !empty($_GET['collpage']) && !empty($_GET['currentpage'])) {
+  	$search_data_tmp = Get_search(htmlspecialchars(trim($_GET['keyword'])), htmlspecialchars(trim($_GET['currentpage'])), htmlspecialchars(trim($_GET['collpage'])), $key, $SITE['url']);
+  	$search_data = json_decode($search_data_tmp, true);
+  	if (!isset($search_data['Error'])) {
+  		$keyword = $search_data['keyword'];
+  		$collpage = $search_data['collpage'];
+  		$currentpage = $search_data['currentpage'];
+  	} else {
+  		$keyword = $default_keyword;
+  	}
+  }
+
 ?>
 
 <div id="keyword">
@@ -79,6 +114,18 @@ if(isset($_GET['error'])) {
       <input name="keyword" class="form-control" autofocus="autofocus"  placeholder="<?php echo $default_keyword; ?>" x-webkit-speech lang='zh-CN' required="required"/>
       <button class="btn search_btn" aria-label="搜一下" id="search_btn"><span>搜索</span></button>
       </form>
+  </div>
+  
+  <!-- 顶部刚搜索的关键词 -->
+  <div class="row">
+    <div class="col-lg-12 col-lg">
+    	<h4>刚刚被搜索的词:</h4>
+    	<?php 
+    	foreach(Recentsearches() as $keyword_cont){
+    		echo '<a href="index.php?keyword='.$keyword_cont['tags'].'" class="label label-primary" target="_blank">'.$keyword_cont['tags'].'</a> ';
+    	} 
+    	?>
+    </div>      
   </div>
 
   <div class="navbar footer navbar-fixed-bottom">

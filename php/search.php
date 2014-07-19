@@ -28,7 +28,7 @@ if (!empty($_GET['keyword'])) {
 	//http://medoo.in/api/update
 	if ($medoo->has("bt_tags", ["tags" => $str_temp]))
     {
-    	$database->update("bt_tags", [
+    	$medoo->update("bt_tags", [
         	"createtime" => date("Y-m-d H:i:s"),
         	"click[+]" => 1
         ], [ "tags" => $str_temp ]);

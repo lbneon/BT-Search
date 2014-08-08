@@ -35,6 +35,17 @@ function Popular_keywords_tk()
     $content = $cache->get('Popularkeywords');
         if (!$content) {
             $html = file_get_contents($url);
+            $headers = array('Host: www.torrentkitty.org', 'Content-type: application/x-www-form-urlencoded;charset=UTF-8', 'Connection: Keep-Alive', 'Accept: image/gif, image/x-bitmap, image/jpeg, image/pjpeg');
+	        $process = curl_init($url);
+	        curl_setopt ($process, CURLOPT_HTTPHEADER, $headers);
+	        curl_setopt ($process, CURLOPT_HEADER, 0);
+	        // curl_setopt ($process, CURLOPT_PROXY, 'http://88.212.27.27:80');
+	        curl_setopt ( $process, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36');
+	        curl_setopt ($process, CURLOPT_REFERER, "http://www.torrentkitty.org/search/");
+	        curl_setopt ( $process, CURLOPT_RETURNTRANSFER, 1 );
+	        curl_setopt ( $process, CURLOPT_TIMEOUT, 15);
+	        $html = curl_exec ( $process );
+	        curl_close ( $process );
             print($html);
             
             foreach($html->find('div.wrapper a') as $name) {

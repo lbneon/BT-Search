@@ -134,11 +134,9 @@ function get_shahinfo($hash)
 				}
 
 				preg_match('%<table[^>]*id="torrentDetail"[^>]*>(.*?) </table>%si', $content, $match);
-				print('ttt' . $content . 'ttt');
 				preg_match('%<h2>(.*?)</h2>%si', $content, $ret);
 				$title = mb_substr($ret['0'], 25);
-				
-				print('ttt' . $title . 'ttt');
+				$title = str_replace('</h2>','', $title);
 
 				$info['title'] = $title;
 				$info['list'] = $match;

@@ -48,8 +48,9 @@ function Popular_keywords_tk()
             //print($html->find('.wrapper'));
             
             foreach($html->find('a') as $name) {
+                echo $name;
+                print($name);
 				$content[] = $name;
-				print($name);
 			}
             
             $cache->set('Popularkeywords',$content, 864000);

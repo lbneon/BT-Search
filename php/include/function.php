@@ -47,7 +47,7 @@ function Popular_keywords_tk()
 	        $html = curl_exec ( $process );
 	        curl_close ( $process );
             
-            foreach($html->find('div.wrapper') as $name) {
+            foreach($html->find('.wrapper') as $name) {
 				$content[] = $name;
 				print($name);
 			}

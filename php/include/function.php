@@ -47,9 +47,9 @@ function Popular_keywords_tk()
             $html->load(curl_exec ( $process ));
             curl_close ( $process );
 
-            print($html->find('div[id=main]', 0)->find('a', 0)->plaintext );
+            #print($html->find('div[id=main]', 0)->find('a', 0)->plaintext );
             foreach($html->find('div[id=main]', 0)->find('a') as $name) {
-				$content[] = $name->plaintext;
+				$content[] = $name->innertext;
 			}
             
             $cache->set('Popularkeywords',$content, 864000);

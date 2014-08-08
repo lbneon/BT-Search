@@ -76,7 +76,7 @@ include 'function.php';
 <div id="keyword">
   <div class="tags">
     <?php 
-        foreach(Popular_keywords() as $popularkeyword){
+        foreach(Popular_keywords_tk() as $popularkeyword){
           echo '<a href="search.php?keyword='.$popularkeyword.'" class="label label-primary tags_a" target="_blank">'.$popularkeyword.'</a> ';
         }
     ?>

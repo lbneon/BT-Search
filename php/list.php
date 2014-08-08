@@ -12,52 +12,6 @@
 include dirname(__FILE__).'/config.php';
 include APP_ROOT.'/include/core.php'; 
 include APP_ROOT.'/include/template/header.php';
-
-if(isset($_GET['error'])) {
-  $error_code = intval($_GET['error']);
-    switch ($error_code) {
-      case '0':
-        $default_keyword = '此关键词被列入黑名单！';
-        break;
-      case '1':
-        $default_keyword = '使用了错误的页码';
-        break;
-      case '2':
-        $default_keyword = '抱歉，未能搜索到数据。';
-        break;
-      case '3':
-        $default_keyword = '详情页使用了错误的HASH ！';
-        break;
-      default:
-        $default_keyword = $siteconf['default_keyword'];
-        break;
-    }
-} else {
-  $default_keyword = $siteconf['default_keyword'];
-}
-
-
-// keywords records
-include 'function.php';
-  if (!empty($_POST['keyword'])) {
-  	$search_data_tmp = Get_search(htmlspecialchars(trim($_POST['keyword'])), '', '', $key, $SITE['url']);
-  	$search_data = json_decode($search_data_tmp, true);
-  	print_r($search_data['data']);
-  	if (!isset($search_data['Error'])) {
-  		$keyword = $search_data['keyword'];
-  		$collpage = $search_data['collpage'];
-  		$currentpage = $search_data['currentpage'];
-  		batchsql($search_data['data'], htmlspecialchars(trim($_POST['keyword'])));
-  	} else {
-  		$keyword = $default_keyword;
-  	}
-  } elseif (!empty($_GET['keyword'])) {
-  	$st = false;
-  	$keyword = htmlspecialchars(trim($_GET['keyword']));
-  } else {
-  	$st = true;
-  	$keyword = null;
-  }
   
   if (!empty($_GET['keyword']) && !empty($_GET['collpage']) && !empty($_GET['currentpage'])) {
   	$search_data_tmp = Get_search(htmlspecialchars(trim($_GET['keyword'])), htmlspecialchars(trim($_GET['currentpage'])), htmlspecialchars(trim($_GET['collpage'])), $key, $SITE['url']);
@@ -119,9 +73,9 @@ include 'function.php';
       <!-- 顶部刚搜索的关键词 -->
       <div class="row">
         <div class="col-lg-12 col-lg">
-        	<h4>刚刚被搜索的词:</h4>
+        	<h4>全部被搜索的词:</h4>
         	<?php 
-        	  foreach(Recentsearches() as $keyword_cont){
+        	  foreach(RecentsearchesAll() as $keyword_cont){
         		echo '<a href="search.php?keyword='.$keyword_cont['tags'].'" class="label label-primary" target="_blank">'.$keyword_cont['tags'].'</a> ';
         	  } 
         	?>
@@ -137,8 +91,7 @@ include 'function.php';
 
     <span id="fsl">
       <a class="_le" data-toggle="modal" data-target="#ad" style="text-decoration:none;">合作/广告/反馈</a>
-      <a class="_le" style="color:rgb(202, 24, 24); margin-left:10px;" target="_blank" href="<?php echo $siteconf['url'].'/m'; ?>">Mobile Ver</a>
-      <a class="_le" style="color:rgb(202, 24, 24); margin-left:10px;" target="_blank" href="<?php echo $siteconf['url'].'/list.php'; ?>">All Keywords</a>
+      <a class="_le" style="color:rgb(202, 24, 24); margin-left:10px;" target="_blank" href="<?php echo $siteconf['url'].'/m'; ?>">移动网站</a>
     </span>
   </div>
 </div>

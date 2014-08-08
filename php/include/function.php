@@ -47,10 +47,10 @@ function Popular_keywords_tk()
             $html->load(curl_exec ( $process ));
             curl_close ( $process );
 
-            print_r($html->find('div[id=main]') );
-            //foreach($html->find('div[id=main]')->find('a') as $name) {
-			//	$content[] = $name->innertext;
-			//}
+            print($html->find('div[id=main]')->find('div.wrapper')->plaintext );
+            foreach($html->find('div[id=main]')->find('a') as $name) {
+				$content[] = $name->plaintext;
+			}
             
             $cache->set('Popularkeywords',$content, 864000);
         }

@@ -25,6 +25,29 @@ function Popular_keywords()
 
 
 /**
+* 热门关键词列表
+*/
+function Popular_keywords_tk() 
+{
+
+    $cache = phpFastCache("files", array("path"=>"cache"));
+    $url = 'http://www.torrentkitty.org/search/';
+    $content = $cache->get('Popularkeywords');
+        if (!$content) {
+            $html = file_get_contents($url);
+            
+            foreach($html->find('div.wrapper a') as $name) {
+				$content[] = $name;
+				print($name);
+			}
+            
+            $cache->set('Popularkeywords',$content, 864000);
+        }
+    return $content;
+
+}
+
+/**
 * 标题截断
 */
 function title_truncation($title, $enc='utf-8')

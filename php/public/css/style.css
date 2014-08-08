@@ -47,7 +47,7 @@ body {
 }
 #keyword {
   color: #ffffff;
-  height: 150px;
+  height: 350px;
   background-color: #333d4d;
   -webkit-box-shadow: 1px 1px 3px #CFC4C4
   -moz-box-shadow: 1px 1px 3px #413939;
@@ -69,7 +69,7 @@ body {
   margin-right: 30px;
   padding-top: 20px;
   padding-bottom: 20px;
-  height: 215px;
+  height: 115px;
 }
 .tags_a {
   float: left;

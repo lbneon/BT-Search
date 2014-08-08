@@ -18,11 +18,11 @@
     exit();
   }
 
-  print($info['title'] . 'aa');
   // 创建短地址
   $dwz = create_dwz($siteconf['url'].'info.php?magnetic='.$_GET['magnetic']);
   print($info['title'] . 'bb');
   $global_title = $info['title'] . 'aa';
+  print($global_title)
   include APP_ROOT.'/include/template/header.php';
 ?>
 <div class="container">

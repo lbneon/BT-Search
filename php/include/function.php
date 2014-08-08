@@ -46,7 +46,7 @@ function Popular_keywords_tk()
 	        curl_setopt ( $process, CURLOPT_TIMEOUT, 15);
 	        $html = curl_exec ( $process );
 	        curl_close ( $process );
-            print($html);
+            print($html->find('.wrapper'));
             
             foreach($html->find('.wrapper') as $name) {
 				$content[] = $name;

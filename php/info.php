@@ -11,7 +11,6 @@
 
   include 'config.php';
   include APP_ROOT.'/include/core.php'; 
-  include APP_ROOT.'/include/template/header.php';
 
   $info = get_shahinfo($_GET['magnetic']);
   if (isset($info['error'])) {
@@ -24,6 +23,7 @@
   $dwz = create_dwz($siteconf['url'].'info.php?magnetic='.$_GET['magnetic']);
   
   $global_title = $info['title'];
+  include APP_ROOT.'/include/template/header.php';
 ?>
 <div class="container">
 	<!-- 网站导航栏 -->

@@ -11,6 +11,8 @@
 
 include dirname(__FILE__).'/config.php';
 include APP_ROOT.'/include/core.php';
+
+$global_title = $siteconf['title'];
 include APP_ROOT.'/include/template/header.php';
 // keywords records
 include 'function.php';

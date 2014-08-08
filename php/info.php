@@ -9,19 +9,21 @@
  * @version    0.3
  */
 
-include 'config.php';
-include APP_ROOT.'/include/core.php'; 
-include APP_ROOT.'/include/template/header.php';
+  include 'config.php';
+  include APP_ROOT.'/include/core.php'; 
+  include APP_ROOT.'/include/template/header.php';
 
-$info = get_shahinfo($_GET['magnetic']);
-if (isset($info['error'])) {
-  header("location: ".$siteconf['url']."?error=3");
-  exit();
-}
+  $info = get_shahinfo($_GET['magnetic']);
+  if (isset($info['error'])) {
+    header("location: ".$siteconf['url']."?error=3");
+    exit();
+  }
 
 
-// 创建短地址
-$dwz = create_dwz($siteconf['url'].'info.php?magnetic='.$_GET['magnetic']);
+  // 创建短地址
+  $dwz = create_dwz($siteconf['url'].'info.php?magnetic='.$_GET['magnetic']);
+  
+  $global_title = $info['title'];
 ?>
 <div class="container">
 	<!-- 网站导航栏 -->

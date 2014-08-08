@@ -18,7 +18,7 @@
     exit();
   }
 
-
+  print($info['title'] . 'aa');
   // 创建短地址
   $dwz = create_dwz($siteconf['url'].'info.php?magnetic='.$_GET['magnetic']);
   

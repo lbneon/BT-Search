@@ -137,7 +137,7 @@ function get_shahinfo($hash)
 				preg_match('%<h2>(.*?)</h2>%si', $content, $ret);
 				$title = mb_substr($ret['0'], 25);
 				
-				print('ttt' . $title . 'ttt');
+				//print('ttt' . $title . 'ttt');
 
 				$info['title'] = $title;
 				$info['list'] = $match;

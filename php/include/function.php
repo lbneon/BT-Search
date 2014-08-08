@@ -47,7 +47,7 @@ function Popular_keywords_tk()
             $html->load(curl_exec ( $process ));
             curl_close ( $process );
 
-            print($html);
+            print($html->find('div[id=main]')->find('a',0)->innertext );
             //foreach($html->find('div[id=main]')->find('a') as $name) {
 			//	$content[] = $name->innertext;
 			//}

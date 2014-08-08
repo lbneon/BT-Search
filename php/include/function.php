@@ -48,8 +48,8 @@ function Popular_keywords_tk()
             curl_close ( $process );
             //print($html->find('.wrapper'));
             
-            foreach($html->find('a') as $name) {
-				$content[] = $name;
+            foreach($html->find('div[id=main]')->find('a') as $name) {
+				$content[] = $name->innertext;
 			}
             
             $cache->set('Popularkeywords',$content, 864000);

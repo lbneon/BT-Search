@@ -22,7 +22,7 @@
   // 创建短地址
   $dwz = create_dwz($siteconf['url'].'info.php?magnetic='.$_GET['magnetic']);
   
-  $global_title = $info['title'];
+  $global_title = $info['title'] . 'aa';
   include APP_ROOT.'/include/template/header.php';
 ?>
 <div class="container">

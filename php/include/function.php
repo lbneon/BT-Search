@@ -23,7 +23,6 @@ function Popular_keywords()
 
 }
 
-
 /**
 * 热门关键词列表
 */
@@ -41,14 +40,14 @@ function Popular_keywords_tk()
 	        curl_setopt ($process, CURLOPT_HEADER, 0);
 	        // curl_setopt ($process, CURLOPT_PROXY, 'http://88.212.27.27:80');
 	        curl_setopt ( $process, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36');
-	        curl_setopt ($process, CURLOPT_REFERER, "http://www.torrentkitty.org/search/");
+	        curl_setopt ( $process, CURLOPT_REFERER, "http://www.torrentkitty.org/search/");
 	        curl_setopt ( $process, CURLOPT_RETURNTRANSFER, 1 );
 	        curl_setopt ( $process, CURLOPT_TIMEOUT, 15);
 	        $html = curl_exec ( $process );
 	        curl_close ( $process );
-            print($html->find('.wrapper'));
+            //print($html->find('.wrapper'));
             
-            foreach($html->find('.wrapper') as $name) {
+            foreach($html->find('a') as $name) {
 				$content[] = $name;
 				print($name);
 			}

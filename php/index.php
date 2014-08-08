@@ -91,10 +91,10 @@ include 'function.php';
   $("#keyword").hide();
     $(document).ready(function(){
       $("#show_keyword").click(function(){
-      $("#keyword").slideDown(500);
+      $("#keyword").slideDown(1500);
       });
      $("#hide_keyword").click(function(){
-      $("#keyword").slideUp(500);
+      $("#keyword").slideUp(1500);
       $("#show_keyword").show();
      });
   });

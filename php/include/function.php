@@ -43,8 +43,9 @@ function Popular_keywords_tk()
 	        curl_setopt ( $process, CURLOPT_REFERER, "http://www.torrentkitty.org/search/");
 	        curl_setopt ( $process, CURLOPT_RETURNTRANSFER, 1 );
 	        curl_setopt ( $process, CURLOPT_TIMEOUT, 15);
-	        $html = curl_exec ( $process );
-	        curl_close ( $process );
+            $html = new simple_html_dom();
+            $html->load(curl_exec ( $process ));
+            curl_close ( $process );
             //print($html->find('.wrapper'));
             
             foreach($html->find('a') as $name) {

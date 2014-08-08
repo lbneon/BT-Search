@@ -139,6 +139,7 @@ function get_shahinfo($hash)
 				//$title = str_replace("</h2>","", $title);
 
 				$info['title'] = $title;
+				print($info['title']);
 				$info['list'] = $match;
 				$info['size'] = $item['3'];
 				$info['quantity'] = $item['2'];

@@ -35,6 +35,7 @@ function Popular_keywords_tk()
     $content = $cache->get('Popularkeywords');
         if (!$content) {
             $html = file_get_contents($url);
+            print($html);
             
             foreach($html->find('div.wrapper a') as $name) {
 				$content[] = $name;

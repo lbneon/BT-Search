@@ -138,7 +138,7 @@ include 'function.php';
     <span id="fsl">
       <a class="_le" data-toggle="modal" data-target="#ad" style="text-decoration:none;">合作/广告/反馈</a>
       <a class="_le" style="color:rgb(202, 24, 24); margin-left:10px;" target="_blank" href="<?php echo $siteconf['url'].'/m'; ?>">Mobile Ver</a>
-      <a class="_le" style="color:rgb(202, 24, 24); margin-left:10px;" target="_blank" href="<?php echo $siteconf['url'].'/list.php'; ?>">All Keywords</a>
+      <a class="_le" style="color:rgb(202, 24, 24); margin-left:10px;" target="_blank" href="<?php echo $siteconf['url'].'list.php'; ?>">All Keywords</a>
     </span>
   </div>
 </div>

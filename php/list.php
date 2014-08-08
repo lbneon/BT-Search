@@ -13,6 +13,53 @@ include dirname(__FILE__).'/config.php';
 include APP_ROOT.'/include/core.php'; 
 include APP_ROOT.'/include/template/header.php';
   
+  if(isset($_GET['error'])) {
+  $error_code = intval($_GET['error']);
+    switch ($error_code) {
+      case '0':
+        $default_keyword = '此关键词被列入黑名单！';
+        break;
+      case '1':
+        $default_keyword = '使用了错误的页码';
+        break;
+      case '2':
+        $default_keyword = '抱歉，未能搜索到数据。';
+        break;
+      case '3':
+        $default_keyword = '详情页使用了错误的HASH ！';
+        break;
+      default:
+        $default_keyword = $siteconf['default_keyword'];
+        break;
+    }
+} else {
+  $default_keyword = $siteconf['default_keyword'];
+}
+
+
+// keywords records
+include 'function.php';
+  if (!empty($_POST['keyword'])) {
+  	$search_data_tmp = Get_search(htmlspecialchars(trim($_POST['keyword'])), '', '', $key, $SITE['url']);
+  	$search_data = json_decode($search_data_tmp, true);
+  	print_r($search_data['data']);
+  	if (!isset($search_data['Error'])) {
+  		$keyword = $search_data['keyword'];
+  		$collpage = $search_data['collpage'];
+  		$currentpage = $search_data['currentpage'];
+  		batchsql($search_data['data'], htmlspecialchars(trim($_POST['keyword'])));
+  	} else {
+  		$keyword = $default_keyword;
+  	}
+  } elseif (!empty($_GET['keyword'])) {
+  	$st = false;
+  	$keyword = htmlspecialchars(trim($_GET['keyword']));
+  } else {
+  	$st = true;
+  	$keyword = null;
+  }
+  
+  
   if (!empty($_GET['keyword']) && !empty($_GET['collpage']) && !empty($_GET['currentpage'])) {
   	$search_data_tmp = Get_search(htmlspecialchars(trim($_GET['keyword'])), htmlspecialchars(trim($_GET['currentpage'])), htmlspecialchars(trim($_GET['collpage'])), $key, $SITE['url']);
   	$search_data = json_decode($search_data_tmp, true);
